@@ -7,7 +7,7 @@
   "publishConfig": {
     "@amberelectric:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A minimalistic, ESLint v9+ compatible fork of `eslint-config-airbnb`",
   "main": "index.js",
   "exports": {
