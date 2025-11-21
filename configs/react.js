@@ -2,6 +2,9 @@
 const reactRules = require("../rules/react");
 const reactA11yRules = require("../rules/react-a11y");
 
+/**
+ * @type {import('eslint').Linter.Config}
+ */
 module.exports = {
   name: "amber/react",
   languageOptions: {

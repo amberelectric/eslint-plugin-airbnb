@@ -1,6 +1,9 @@
 // ESLint v9 Flat Config for eslint-plugin-amber base rules
 const globals = require("globals");
 
+/**
+ * @type {import('eslint').Linter.Config}
+ */
 module.exports = {
   name: "amber/base",
   languageOptions: {

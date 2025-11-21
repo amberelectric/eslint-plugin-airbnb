@@ -1,9 +1,12 @@
 // ESLint v9 Flat Config for React Hooks
 
-const reactHooksRules = require('../rules/react-hooks');
+const reactHooksRules = require("../rules/react-hooks");
 
+/**
+ * @type {import('eslint').Linter.Config}
+ */
 module.exports = {
-  name: 'amber/react-hooks',
+  name: "amber/react-hooks",
   languageOptions: {
     parserOptions: {
       ecmaFeatures: {
@@ -12,10 +15,9 @@ module.exports = {
     },
   },
   plugins: {
-    'react-hooks': require('eslint-plugin-react-hooks'),
+    "react-hooks": require("eslint-plugin-react-hooks"),
   },
   rules: {
     ...reactHooksRules.rules,
   },
 };
-
