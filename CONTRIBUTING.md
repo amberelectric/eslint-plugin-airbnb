@@ -19,7 +19,7 @@ npm run lint
 ### Structure
 
 ```
-eslint-plugin-amber/
+eslint-plugin-airbnb/
 ├── configs/          # Flat config exports
 │   ├── base.js      # Base JavaScript/ES6 config
 │   ├── react.js     # React rules config
@@ -52,11 +52,16 @@ eslint-plugin-amber/
 ### Versioning
 
 This project follows semantic versioning (SemVer):
+
 - **Major**: Breaking changes to rule configurations
 - **Minor**: New rules or non-breaking changes
 - **Patch**: Bug fixes
 
 ### Publishing
+
+Make sure you have a GitHub Personal Access Token with the `write:packages` scope set as an environment variable called `GITHUB_PAT_AMBER_ELECTRIC`.
+
+Then run:
 
 ```bash
 npm version [major|minor|patch]

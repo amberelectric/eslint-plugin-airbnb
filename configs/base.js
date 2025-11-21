@@ -1,4 +1,4 @@
-// ESLint v9 Flat Config for eslint-plugin-amber base rules
+// ESLint v9 Flat Config for eslint-plugin-airbnb base rules
 const globals = require("globals");
 
 /**

@@ -1,4 +1,4 @@
-// ESLint v9 Flat Config for eslint-plugin-amber with React
+// ESLint v9 Flat Config for eslint-plugin-airbnb with React
 const reactRules = require("../rules/react");
 const reactA11yRules = require("../rules/react-a11y");
 

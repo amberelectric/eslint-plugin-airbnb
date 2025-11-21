@@ -1,5 +1,12 @@
 {
-  "name": "@amberelectric/eslint-plugin-amber",
+  "name": "@amberelectric/eslint-plugin-airbnb",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amberelectric/eslint-plugin-airbnb.git"
+  },
+  "publishConfig": {
+    "@amberelectric:registry": "https://npm.pkg.github.com"
+  },
   "version": "1.0.0",
   "description": "Amber's ESLint plugin with flat config support for ESLint v9, inspired by Airbnb's style guide",
   "main": "index.js",
@@ -15,14 +22,9 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "safe-publish-latest",
+    "prepublishOnly": "",
     "prepublish": "not-in-publish || npm run prepublishOnly",
-    "pretest": "npm run --silent lint",
-    "link:eslint": "cd node_modules/eslint && npm link --production && cd -"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/amberelectric/eslint-plugin-amber"
+    "pretest": "npm run --silent lint"
   },
   "keywords": [
     "eslint",
@@ -44,7 +46,7 @@
   ],
   "author": "Rudy Perottoni @ Amber Electric",
   "license": "MIT",
-  "homepage": "https://github.com/amberelectric/eslint-plugin-amber",
+  "homepage": "https://github.com/amberelectric/eslint-plugin-airbnb",
   "dependencies": {
     "confusing-browser-globals": "^1.0.11"
   },
