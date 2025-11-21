@@ -1,4 +1,3 @@
-module.exports = {
-  extends: ['eslint-config-airbnb-base'].map(require.resolve),
-  rules: {},
-};
+// ESLint v9 Flat Config for base rules only (no React)
+
+module.exports = require('./configs/base');

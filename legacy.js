@@ -1,4 +1,9 @@
+// Legacy config - deprecated in favor of flat config
+// For backwards compatibility with ESLint < 9
+
 module.exports = {
-  extends: ['eslint-config-airbnb-base/legacy'].map(require.resolve),
+  extends: [
+    './configs/base.js',
+  ].map(require.resolve),
   rules: {},
 };

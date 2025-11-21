@@ -1,87 +1,156 @@
-# eslint-config-airbnb
+# eslint-plugin-amber
 
-[![npm version](https://badge.fury.io/js/eslint-config-airbnb.svg)](https://badge.fury.io/js/eslint-config-airbnb)
+Amber's ESLint plugin with flat config support for ESLint v9, inspired by Airbnb's JavaScript style guide.
 
-This package provides Airbnb's .eslintrc as an extensible shared config.
+## Installation
+
+```bash
+npm install --save-dev eslint-plugin-amber eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint
+```
 
 ## Usage
 
-We export three ESLint configurations for your usage.
+### ESLint v9 Flat Config (Recommended)
 
-### eslint-config-airbnb
+Create an `eslint.config.js` file in your project root:
 
-Our default export contains most of our ESLint rules, including ECMAScript 6+ and React. It requires `eslint`, `eslint-plugin-import`, `eslint-plugin-react`, `eslint-plugin-react-hooks`, and `eslint-plugin-jsx-a11y`. Note that it does not enable our React Hooks rules. To enable those, see the [`eslint-config-airbnb/hooks` section](#eslint-config-airbnbhooks).
+```javascript
+const amber = require('eslint-plugin-amber');
 
-If you don't need React, see [eslint-config-airbnb-base](https://npmjs.com/eslint-config-airbnb-base).
+module.exports = [
+  // For JavaScript/Node.js projects (base rules only)
+  amber.configs.base,
+  
+  // OR for React projects (includes base + React + React Hooks)
+  ...amber.configs.recommended,
+  
+  // Your custom overrides
+  {
+    rules: {
+      // Your rule overrides here
+    }
+  }
+];
+```
 
-1. Install the correct versions of each package, which are listed by the command:
+### Available Configs
 
-  ```sh
-  npm info "eslint-config-airbnb@latest" peerDependencies
-  ```
+- `amber.configs.base` - Base JavaScript/ES6 rules (no React)
+- `amber.configs.react` - Base + React rules (array of configs)
+- `amber.configs['react-hooks']` - Base + React + React Hooks (array of configs)
+- `amber.configs.recommended` - Alias for `react-hooks` (array of configs)
 
-  If using **npm 5+**, use this shortcut
+### Individual Config Imports
 
-  ```sh
-  npx install-peerdeps --dev eslint-config-airbnb
-  ```
+You can also import individual configs:
 
-  If using **yarn**, you can also use the shortcut described above if you have npm 5+ installed on your machine, as the command will detect that you are using yarn and will act accordingly.
-  Otherwise, run `npm info "eslint-config-airbnb@latest" peerDependencies` to list the peer dependencies and versions, then run `yarn add --dev <dependency>@<version>` for each listed peer dependency.
+```javascript
+const amberBase = require('eslint-plugin-amber/base');
+const amberHooks = require('eslint-plugin-amber/hooks');
 
-  If using **npm < 5**, Linux/OSX users can run
+module.exports = [
+  amberBase,
+  amberHooks,
+  // your overrides
+];
+```
 
-  ```sh
-  (
-    export PKG=eslint-config-airbnb;
-    npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
-  )
-  ```
+### Legacy ESLint Config (< v9)
 
-  Which produces and runs a command like:
+For older ESLint versions, create an `.eslintrc.js` file:
 
-  ```sh
-  npm install --save-dev eslint-config-airbnb eslint@^#.#.# eslint-plugin-jsx-a11y@^#.#.# eslint-plugin-import@^#.#.# eslint-plugin-react@^#.#.# eslint-plugin-react-hooks@^#.#.#
-  ```
+```javascript
+module.exports = {
+  extends: [
+    'plugin:amber/legacy'
+  ],
+  rules: {
+    // Your rule overrides here
+  }
+};
+```
 
-  If using **npm < 5**, Windows users can either install all the peer dependencies manually, or use the [install-peerdeps](https://github.com/nathanhleung/install-peerdeps) cli tool.
+## Features
 
-  ```sh
-  npm install -g install-peerdeps
-  install-peerdeps --dev eslint-config-airbnb
-  ```
-  The cli will produce and run a command like:
+- ✅ **ESLint v9 Flat Config Support** - Modern flat config format
+- ✅ **Backward Compatible** - Legacy config support for ESLint < 9
+- ✅ **Comprehensive Rules** - Based on Airbnb's battle-tested style guide
+- ✅ **React Support** - Includes React, React Hooks, and JSX A11y rules
+- ✅ **Import Management** - Smart import/export linting
+- ✅ **Modern JavaScript** - ES6+ and latest ECMAScript features
 
-  ```sh
-  npm install --save-dev eslint-config-airbnb eslint@^#.#.# eslint-plugin-jsx-a11y@^#.#.# eslint-plugin-import@^#.#.# eslint-plugin-react@^#.#.# eslint-plugin-react-hooks@^#.#.#
-  ```
+## Rule Categories
 
-2. Add `"extends": "airbnb"` to your `.eslintrc`
+### Base Rules
+- **Best Practices** - Error prevention and code quality
+- **ES6** - Modern JavaScript features
+- **Imports** - Module import/export management
+- **Node.js** - Node.js specific rules
+- **Strict Mode** - Strict mode enforcement
+- **Style** - Code formatting and consistency
+- **Variables** - Variable declaration and usage
+- **Errors** - Possible syntax and logic errors
 
-### eslint-config-airbnb/hooks
+### React Rules
+- **React** - React component best practices
+- **JSX A11y** - Accessibility rules for JSX
+- **React Hooks** - Hooks best practices and lint rules
 
-This entry point enables the linting rules for React hooks (requires v16.8+). To use, add `"extends": ["airbnb", "airbnb/hooks"]` to your `.eslintrc`.
+## Whitespace Rules
 
-### eslint-config-airbnb/whitespace
+For projects that only want to enforce whitespace/formatting rules as errors:
 
-This entry point only errors on whitespace rules and sets all other rules to warnings. View the list of whitespace rules [here](https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb/whitespace.js).
+```javascript
+const whitespace = require('eslint-plugin-amber/whitespace');
 
-### eslint-config-airbnb/base
+module.exports = [whitespace];
+```
 
-This entry point is deprecated. See [eslint-config-airbnb-base](https://npmjs.com/eslint-config-airbnb-base).
+## Migrating from eslint-config-airbnb
 
-### eslint-config-airbnb/legacy
+If you're migrating from `eslint-config-airbnb`:
 
-This entry point is deprecated. See [eslint-config-airbnb-base](https://npmjs.com/eslint-config-airbnb-base).
+1. Uninstall old dependencies:
+   ```bash
+   npm uninstall eslint-config-airbnb eslint-config-airbnb-base
+   ```
 
-See [Airbnb's JavaScript styleguide](https://github.com/airbnb/javascript) and
-the [ESlint config docs](https://eslint.org/docs/user-guide/configuring#extending-configuration-files)
-for more information.
+2. Install eslint-plugin-amber:
+   ```bash
+   npm install --save-dev eslint-plugin-amber
+   ```
 
-## Improving this config
+3. Update your ESLint config:
+   - For ESLint v9: Use flat config (see Usage above)
+   - For ESLint < 9: Replace `airbnb` with `plugin:amber/legacy`
 
-Consider adding test cases if you're making complicated rules changes, like anything involving regexes. Perhaps in a distant future, we could use literate programming to structure our README as test cases for our .eslintrc?
+## Development
 
-You can run tests with `npm test`.
+```bash
+# Install dependencies
+npm install
 
-You can make sure this module lints with itself using `npm run lint`.
+# Run linter
+npm run lint
+```
+
+## Contributing
+
+Contributions are welcome! Please read our contributing guidelines before submitting PRs.
+
+## License
+
+MIT
+
+## Credits
+
+This project is inspired by and based on [Airbnb's JavaScript Style Guide](https://github.com/airbnb/javascript) and their ESLint configurations.
+
+## Changelog
+
+### 1.0.0
+- Initial release
+- ESLint v9 flat config support
+- Modernized package structure
+- Updated all dependencies to latest versions
+- Maintained compatibility with Airbnb's style guide

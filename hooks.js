@@ -1,6 +1,3 @@
-module.exports = {
-  extends: [
-    './rules/react-hooks.js',
-  ].map(require.resolve),
-  rules: {}
-};
+// ESLint v9 Flat Config for React hooks
+
+module.exports = require('./configs/react-hooks');
