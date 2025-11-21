@@ -12,9 +12,7 @@ npm install --save-dev @amberelectric/eslint-plugin-airbnb eslint-plugin-import 
 
 ## Usage
 
-### ESLint v9 Flat Config (Recommended)
-
-Create an `eslint.config.js` file in your project root:
+Create an `eslint.config.[mjs|js]` file in your project root:
 
 ```javascript
 const airbnbPlugin = require("@amberelectric/eslint-plugin-airbnb");
