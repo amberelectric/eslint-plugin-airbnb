@@ -7,7 +7,7 @@
   "publishConfig": {
     "@amberelectric:registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Amber's ESLint plugin with flat config support for ESLint v9, inspired by Airbnb's style guide",
   "main": "index.js",
   "exports": {
