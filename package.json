@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-amber",
+  "name": "@amberelectric/eslint-plugin-amber",
   "version": "1.0.0",
   "description": "Amber's ESLint plugin with flat config support for ESLint v9, inspired by Airbnb's style guide",
   "main": "index.js",
