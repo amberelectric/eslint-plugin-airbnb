@@ -15,7 +15,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "eslint-find-rules --unused && safe-publish-latest",
+    "prepublishOnly": "safe-publish-latest",
     "prepublish": "not-in-publish || npm run prepublishOnly",
     "pretest": "npm run --silent lint",
     "link:eslint": "cd node_modules/eslint && npm link --production && cd -"
@@ -50,11 +50,11 @@
   },
   "devDependencies": {
     "eslint": ">= 9",
-    "eslint-find-rules": "5.0.0",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
+    "globals": "^15.13.0",
     "in-publish": "^2.0.1",
     "react": "19.2.0",
     "safe-publish-latest": "2.0.0"
