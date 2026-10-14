@@ -1,0 +1,8 @@
+# Make a frozen-lockfile install the default in every environment, not just CI (pnpm only
+# turns it on automatically when $CI is set). Run `pnpm install --no-frozen-lockfile` when you
+# have deliberately changed package.json and want the lockfile regenerated.
+frozenLockfile: true
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+minimumReleaseAgeExclude:
+  - "@amberelectric/*"

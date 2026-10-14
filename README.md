@@ -114,10 +114,10 @@ If you're migrating from `eslint-config-airbnb`:
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Run linter
-npm run lint
+pnpm run lint
 ```
 
 ## License

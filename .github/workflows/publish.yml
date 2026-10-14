@@ -1,0 +1,39 @@
+# Publishes the package to Amber's CodeArtifact registry when a GitHub Release is published.
+# The published version is whatever `version` is in package.json.
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      # No dependencies are needed to publish: the package has no build step.
+      - name: ⬢ Setup Node and PNPM
+        uses: pnpm/setup@fbda4c85fc2e1e08721cd8763afea8f48d60f024 # v3.0.0
+        with:
+          node-version-file: .nvmrc
+          install: false
+
+      - name: Configure AWS credentials for CodeArtifact
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: arn:aws:iam::630888660911:role/oidc-amberelectric-toolbox-codeartifact-publish
+          aws-region: ap-southeast-2
+
+      - name: Login to CodeArtifact
+        run: |
+          aws codeartifact login --tool npm \
+            --domain amber --domain-owner 630888660911 \
+            --repository npm --region ap-southeast-2
+
+      - name: Publish
+        run: pnpm publish --no-git-checks

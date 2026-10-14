@@ -5,9 +5,10 @@
     "url": "git+https://github.com/amberelectric/eslint-plugin-airbnb.git"
   },
   "publishConfig": {
-    "@amberelectric:registry": "https://npm.pkg.github.com"
+    "registry": "https://amber-630888660911.d.codeartifact.ap-southeast-2.amazonaws.com/npm/npm/"
   },
-  "version": "1.0.2",
+  "version": "1.0.3",
+  "packageManager": "pnpm@11.28.4",
   "description": "A minimalistic, ESLint v9+ compatible fork of `eslint-config-airbnb`",
   "main": "index.js",
   "exports": {
@@ -22,9 +23,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "prepublishOnly": "",
-    "prepublish": "not-in-publish || npm run prepublishOnly",
-    "pretest": "npm run --silent lint"
+    "pretest": "pnpm run --silent lint"
   },
   "keywords": [
     "eslint",
@@ -44,7 +43,7 @@
     "flat-config",
     "amber"
   ],
-  "author": "Rudy Perottoni @ Amber Electric",
+  "author": "Tech Enablement @ Amber Electric",
   "license": "MIT",
   "homepage": "https://github.com/amberelectric/eslint-plugin-airbnb",
   "dependencies": {
@@ -57,7 +56,6 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
     "globals": "^15.13.0",
-    "in-publish": "^2.0.1",
     "react": "19.2.0",
     "safe-publish-latest": "2.0.0"
   },
@@ -69,6 +67,6 @@
     "eslint-plugin-react-hooks": ">= 7"
   },
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   }
 }
